@@ -67,8 +67,13 @@
       opacity: 0;
     }
 
+    .headline {
+      animation: fadeUp 0.6s ease 0.15s forwards;
+      opacity: 0;
+    }
+
     .tagline {
-      animation: fadeUp 0.6s ease 0.2s forwards;
+      animation: fadeUp 0.6s ease 0.25s forwards;
       opacity: 0;
     }
 
@@ -104,18 +109,29 @@
       color: var(--maroon);
       letter-spacing: -0.03em;
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 28px;
       font-style: italic;
     }
 
-    /* Tagline */
+    /* Headline */
+    .headline {
+      font-size: clamp(1.5rem, 3.6vw, 2rem);
+      font-weight: 300;
+      color: var(--maroon);
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      max-width: 540px;
+    }
+
+    /* Subline */
     .tagline {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
       font-weight: 300;
       color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 64px;
-      max-width: 480px;
+      max-width: 540px;
     }
 
     /* Role Section */
@@ -301,15 +317,16 @@
 
     <h1 class="wordmark">Lantell</h1>
 
-    <p class="tagline">The verification layer for high-stakes property work.</p>
+    <h2 class="headline">Risk infrastructure for tenant improvement projects.</h2>
+
+    <p class="tagline">Verified documents before allowances release, every project email captured automatically, close-out packages generated on their own.</p>
 
     <div id="form-section-wrapper">
       <div class="role-section">
         <p class="role-label">I am a</p>
         <div class="role-pills">
           <button class="role-pill" data-role="property_manager">Property Manager</button>
-          <button class="role-pill" data-role="vendor">Vendor</button>
-          <button class="role-pill" data-role="investor">Investor</button>
+          <button class="role-pill" data-role="asset_manager">Asset Manager</button>
         </div>
       </div>
 
@@ -335,7 +352,7 @@
       </div>
     </div>
 
-    <p class="footnote">Built for property managers and vendors who take their work seriously.</p>
+    <p class="footnote">Built for property and asset managers who take their work seriously.</p>
   </div>
 
   <script>
