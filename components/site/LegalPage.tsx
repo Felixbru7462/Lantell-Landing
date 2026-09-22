@@ -6,11 +6,10 @@ import { Footer } from "./Footer";
  * Shared shell for /privacy and /terms. Deliberately plain: the marketing page earns attention,
  * a legal page earns trust by being readable. One column, real headings, a table of contents.
  *
- * Both documents are DRAFTS until the gaps are filled and a lawyer has read them. Anything still
- * missing is written as [[like this]] in the body text and rendered as a visible marker, so an
- * unfinished page can never quietly look finished. Flip LEGAL_DRAFT to false to drop the notice.
+ * Anything not yet known is written as [[like this]] in the body text and renders as a visible
+ * marker, so an unfinished page can never quietly look finished. A page still carrying one passes
+ * `draft`, which puts a notice at the top; a page with no gaps left drops both and simply applies.
  */
-export const LEGAL_DRAFT = true;
 
 export type LegalSection = {
   id: string;
@@ -41,11 +40,14 @@ export function LegalPage({
   updated,
   intro,
   sections,
+  draft = false,
 }: {
   title: string;
   updated: string;
   intro: string;
   sections: LegalSection[];
+  /** True while the document still has [[gaps]] in it. Adds the "not yet in force" notice. */
+  draft?: boolean;
 }) {
   return (
     <>
@@ -86,7 +88,7 @@ export function LegalPage({
             </div>
 
             <div className="lg:col-span-7 lg:col-start-6">
-              {LEGAL_DRAFT && (
+              {draft && (
                 <div className="mb-10 border border-[#8B1F1F]/30 bg-[#8B1F1F]/[0.04] p-5">
                   <span className="font-mono text-[10px] tracking-wider text-[#8B1F1F] uppercase">
                     Draft / not yet in force

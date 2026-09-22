@@ -15,7 +15,7 @@ const SECTIONS: LegalSection[] = [
     id: "agreement",
     heading: "The agreement",
     body: [
-      "These terms are between you and [[legal entity name]], which operates Lantell. They apply when you use lantell.io or app.lantell.io, whether you signed up yourself, were invited by a colleague, or were sent a link by someone using Lantell.",
+      "These terms are between you and Felix Brunnemann, who operates Lantell. They apply when you use lantell.io or app.lantell.io, whether you signed up yourself, were invited by a colleague, or were sent a link by someone using Lantell.",
       "If you agreed a separate written contract or order form with us, that document wins wherever the two disagree. These terms fill the gaps.",
       "If you are accepting on behalf of a company, you are confirming that you are allowed to bind it.",
     ],
@@ -111,7 +111,7 @@ const SECTIONS: LegalSection[] = [
     heading: "Limitation of liability",
     body: [
       "To the extent the law allows, neither side is liable for indirect, incidental, special or consequential loss, or for lost profits, lost revenue, lost data or business interruption, even if warned it was possible.",
-      "Our total liability arising out of or relating to Lantell is limited to [[the greater of the fees you paid us in the 12 months before the claim, or US$ amount to confirm]].",
+      "Our total liability arising out of or relating to Lantell is limited to the greater of the fees you paid us in the twelve months before the claim, or one hundred US dollars.",
       "Nothing here excludes liability that cannot legally be excluded - including fraud, or death or personal injury caused by negligence.",
     ],
   },
@@ -126,7 +126,7 @@ const SECTIONS: LegalSection[] = [
     id: "law",
     heading: "Governing law",
     body: [
-      "These terms are governed by the laws of [[state]], United States, without regard to its conflict-of-laws rules. The state and federal courts located in [[county and state]] have exclusive jurisdiction, and both sides consent to that venue.",
+      "These terms are governed by the laws of [[the state Lantell is operated from]], United States, without regard to its conflict-of-laws rules. The state and federal courts of that state have exclusive jurisdiction, and both sides consent to that venue.",
       "If any part of these terms turns out to be unenforceable, the rest still stands.",
     ],
   },
@@ -141,8 +141,7 @@ const SECTIONS: LegalSection[] = [
     id: "contact",
     heading: "Contact",
     body: [
-      "Questions about these terms: [[contact email]].",
-      "Postal address: [[postal address]].",
+      "Questions about these terms: hello@lantell.io.",
       "How we handle information is set out in the Privacy Policy.",
     ],
   },
@@ -155,6 +154,7 @@ export default function TermsPage() {
       updated={UPDATED}
       intro="These are the rules for using Lantell. They are written in plain language on purpose - if a clause is doing something you would not expect, you should be able to spot it on one read."
       sections={SECTIONS}
+      draft
     />
   );
 }

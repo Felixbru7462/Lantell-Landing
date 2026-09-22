@@ -16,7 +16,7 @@ const SECTIONS: LegalSection[] = [
     id: "scope",
     heading: "Who this covers",
     body: [
-      "Lantell is operated by [[legal entity name]], based in the United States. In this policy, \"we\" means Lantell and \"you\" means whoever is reading it - a visitor to this website, a customer using the product, or a tenant or contractor who was sent a link.",
+      "Lantell is operated by Felix Brunnemann, based in the United States. In this policy, \"we\" means Lantell and \"you\" means whoever is reading it - a visitor to this website, a customer using the product, or a tenant or contractor who was sent a link.",
       "It covers two things: this marketing website (lantell.io) and the product itself (app.lantell.io). Where the two differ, the difference is spelled out.",
     ],
   },
@@ -94,7 +94,7 @@ const SECTIONS: LegalSection[] = [
       "Demo requests and the email they generate: kept while there is any chance of a conversation, and deleted within 24 months of the last contact.",
       "Customer workspaces: kept for as long as the account is open. After an account is closed, we delete or anonymise the data within 30 days, unless you ask us in writing to hold it longer or the law requires us to.",
       "Because the product is an audit tool, deletions inside a workspace are deliberately soft: a removed draw or document stops appearing but leaves a dated trace in the activity log, which is what makes the log trustworthy. Hard deletion happens when the workspace is deleted.",
-      "Analytics: retained by PostHog according to their retention settings, currently [[PostHog retention period - check your project settings]].",
+      "Analytics: kept by PostHog for 30 days, then deleted.",
       "Server logs: short-lived, kept by our hosting provider for its own operational window.",
     ],
   },
@@ -112,7 +112,7 @@ const SECTIONS: LegalSection[] = [
     id: "rights",
     heading: "Your choices and rights",
     body: [
-      "You can ask us what we hold about you, ask for it to be corrected, ask for a copy, or ask us to delete it. Write to [[privacy contact email]] and we will answer within 30 days. We will not charge you, and we will not treat you differently for asking.",
+      "You can ask us what we hold about you, ask for it to be corrected, ask for a copy, or ask us to delete it. Write to hello@lantell.io and we will answer within 30 days. We will not charge you, and we will not treat you differently for asking.",
       "We do not sell personal information and we do not share it for cross-context behavioural advertising, so there is nothing to opt out of on that front. Analytics you can switch off in section 5.",
       "If you are a tenant, contractor or reviewer, start with the property manager who invited you - the data is theirs to act on, and we will support whatever they decide.",
       "Depending on where you live you may have additional rights, and you may have the right to complain to your local data protection authority. We would rather you came to us first.",
@@ -136,8 +136,7 @@ const SECTIONS: LegalSection[] = [
     id: "contact",
     heading: "Contact",
     body: [
-      "Privacy questions, requests and complaints: [[privacy contact email]].",
-      "Postal address: [[postal address]].",
+      "Privacy questions, requests and complaints: hello@lantell.io.",
       "The terms that govern use of Lantell are on the Terms of Service page.",
     ],
   },

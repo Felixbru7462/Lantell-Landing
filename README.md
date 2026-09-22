@@ -55,5 +55,7 @@ secret. The app — which already holds the database service-role key for its ow
 - No `-webkit-font-smoothing` anywhere: the reference design didn't have it, and adding it changes
   every weight on the page.
 - Border radius is 0 everywhere. That is a design decision, not an oversight.
-- `/privacy` and `/terms` are drafts until `LEGAL_DRAFT` in `components/site/LegalPage.tsx` is set to
-  `false`. Anything still unfilled is written `[[like this]]` and renders as a visible marker.
+- Anything unknown in `/privacy` or `/terms` is written `[[like this]]` and renders as a visible
+  marker. A page that still has one also passes `draft` to `LegalPage`, which adds a "not yet in
+  force" notice — drop the prop once the gaps are filled, because a published policy that announces
+  it isn't in force is worse than none.

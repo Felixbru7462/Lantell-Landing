@@ -1,88 +1,76 @@
 # Going live checklist
 
-Everything in the code is done. What is left is configuration that only the account owner can do,
-in the order below. Nothing here touches `lantell.io` until step 4.
-
-Current state: the site is on the **`staging`** branch and deployed as a Vercel Preview at
+State as of 2026-09-21. The site is on the **`staging`** branch and deployed as a Vercel Preview at
 `lantell-landing-git-staging-felix-brunnemanns-projects.vercel.app` (Vercel login required, and
-`noindex`, so no search engine will see it). `lantell.io` still serves the old splash from `main`.
+`noindex`, so no search engine sees it). `lantell.io` still serves the old splash from `main`.
 
----
+## Done
 
-## 1. Make one shared secret
+- **Vercel variables** — set by the owner on both projects (`NEXT_PUBLIC_POSTHOG_KEY`,
+  `DEMO_REQUEST_ENDPOINT`, `DEMO_REQUEST_SECRET` on `lantell-landing`; `DEMO_REQUEST_SECRET`,
+  `DEMO_REQUEST_TO` on `lantell`). They take effect on each project's next build.
+- **Database** — migrations `037` and `038` are applied to staging and production.
+- **Privacy Policy** — complete, no gaps, no draft notice. It names `hello@lantell.io` as the
+  contact, which makes step 1 below a prerequisite rather than a nice-to-have.
 
-The marketing site and the app authenticate to each other with a value that has to be **identical**
-in both places. Generate it once:
+## Before merging to production
 
-```bash
-openssl rand -hex 32
-```
+### 1. Make `hello@lantell.io` receive mail
 
-Keep that string handy for steps 2 and 3. It is not in this repo and must never be committed — this
-repository is public.
+The privacy page publishes that address. Namecheap holds the DNS (`registrar-servers.com`) and the
+root domain has **no MX records at all**, so nothing can conflict.
 
-## 2. Vercel → project `lantell-landing` → Settings → Environment Variables
+Namecheap dashboard → Domain List → `lantell.io` → Manage → **Advanced DNS** → Mail Settings →
+choose **Email Forwarding** → forward `hello` to the real inbox. Namecheap adds its own MX records
+for the root domain. `inbound.lantell.io` keeps its own MX (Amazon SES, for project capture
+addresses) — subdomain mail records are independent of the root.
 
-| Key | Value | Environments |
-|---|---|---|
-| `NEXT_PUBLIC_POSTHOG_KEY` | the same `phc_…` project key the app already uses | **Production** only |
-| `DEMO_REQUEST_ENDPOINT` | `https://app.lantell.io/api/demo-request` | **Production** |
-| `DEMO_REQUEST_SECRET` | the string from step 1 | **Production** |
+Free, receive-only. Sending *as* the address is a separate thing; see "Later" below.
 
-Leave all three off **Preview** and **Development** on purpose: analytics then records nothing from
-preview branches, and the demo form on a preview accepts the submission and quietly discards it
-instead of emailing a real lead. (If you do want the form live on staging, add the two
-`DEMO_REQUEST_*` rows to Preview as well — submissions from any branch then reach your inbox.)
+### 2. Finish the Terms page
 
-## 3. Vercel → project `lantell` (the app) → Settings → Environment Variables
+One gap remains: the state whose law governs. Fill it in, then remove the `draft` prop from
+`<LegalPage>` in `app/terms/page.tsx` so the "not yet in force" notice disappears. A published
+policy that says it isn't in force is worse than no policy.
 
-| Key | Value | Environments |
-|---|---|---|
-| `DEMO_REQUEST_SECRET` | **the same string from step 1** | **Production** |
-| `DEMO_REQUEST_TO` | the address demo requests should reach | **Production** |
+### 3. Deploy the app, then this site
 
-Production only. The app's previews run against the staging database with email switched off, and
-`DEMO_REQUEST_TO` is deliberately separate from `OWNER_ALERT_EMAIL` so contract warnings and demo
-requests can go to different places later.
+Order matters — the marketing site must never point a working form at a route that isn't there.
 
-## 4. Deploy, app first
-
-Environment variables are read when a deployment is built, so each project needs a deploy **after**
-its variables exist.
-
-1. **App repo** — commit and push the demo-request route to `main`. Database migrations `037` and
-   `038` are already applied to both staging and production, so the schema is waiting for it.
+1. **App repo** — commit and push the `/api/demo-request` route to `main`. As of now that route
+   returns **404 in production**, so the form cannot work until this happens. The database and the
+   Vercel variables are already waiting for it.
 2. **This repo** — merge `staging` into `main`. That is the moment `lantell.io` changes:
 
 ```bash
 git checkout main && git merge staging && git push
 ```
 
-The old splash page and its waitlist form disappear at that point. Both are in git history, and the
+The old splash and its waitlist form disappear then. Both are in this repo's history, and the
 waitlist rows stay untouched in the database.
 
-## 5. Verify, in this order
+### 4. Verify, in this order
 
 - Open `lantell.io`, submit the demo form with a real address.
-- The email should arrive within a few seconds, and **hitting reply should answer the prospect**, not
-  a notifications mailbox.
+- The email should arrive in seconds, and **hitting reply should answer the prospect**, not a
+  notifications mailbox.
 - The row: `select email, message, created_at from demo_requests order by created_at desc limit 5;`
 - PostHog should show a pageview for `lantell.io` within a minute or two.
+- Send a test message to `hello@lantell.io` and check it lands.
 
----
+## Later, not blocking
 
-## Worth doing before launch, but not blocking
-
-- **Legal pages.** `/privacy` and `/terms` are drafts. Fill in every `[[highlighted]]` gap, have a
-  lawyer read them, then set `LEGAL_DRAFT = false` in `components/site/LegalPage.tsx` to remove the
-  draft banner.
-- **A mailbox on the domain.** The legal pages need a contact address that actually receives mail.
-  `inbound.lantell.io` is a receiving subdomain for project capture addresses, not a mailbox —
-  there is nothing at `privacy@lantell.io` today.
-- **Send as the real domain.** Resend has only `inbound.lantell.io` verified for sending, so app
-  email currently goes out as `notifications@inbound.lantell.io`. Add `lantell.io` as a sending
-  domain in Resend, publish its DKIM/SPF records, then set
-  `EMAIL_FROM=Lantell <notifications@lantell.io>` on the app project.
+- **Sending as the domain.** Forwarding only receives. To answer prospects from `@lantell.io`
+  instead of a personal address, either add a cheap mailbox (Namecheap Private Email, roughly a
+  dollar a month) or use a free tier that supports custom domains, then set it up as "send mail as"
+  in the existing mail client.
+- **App email still leaves from the wrong-looking address.** Resend has only `inbound.lantell.io`
+  verified for sending, so notifications go out as `notifications@inbound.lantell.io`. Verify
+  `lantell.io` as a sending domain in Resend, then set
+  `EMAIL_FROM=Lantell <notifications@lantell.io>` on the app project. **Careful:** a mailbox
+  provider and Resend will both want an SPF record on the root domain, and two SPF records break
+  mail delivery. They have to be merged into one `v=spf1 include:a include:b ~all`.
+- **A lawyer's read** of both pages once there is a contract to sign.
 - **Product screenshots.** `public/shots/` is empty, so the screenshot section is hidden. Drop in
   any of `checklist.png`, `tenant-portal.png`, `release-memo.png`, `activity.png` (roughly 1440x900,
   taken on a signed-in account) and the section appears on its own, with the slots that have files.
