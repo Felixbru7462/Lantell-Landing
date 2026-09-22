@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* next/font injects --font-inter-tight and --font-jetbrains-mono in the layout. */
+    --font-heading: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+    --font-body: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+      Consolas, monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* The fixed header is 64px (80px from lg), so anchor targets need that much clearance. */
+    scroll-padding-top: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #ffffff;
+    color: #1a1c1e;
+  }
+}
+
+@layer utilities {
+  /* Marketing site is light-only; never let a dark-mode UA repaint the form controls. */
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
