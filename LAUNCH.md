@@ -83,7 +83,8 @@ waitlist rows stay untouched in the database.
   email currently goes out as `notifications@inbound.lantell.io`. Add `lantell.io` as a sending
   domain in Resend, publish its DKIM/SPF records, then set
   `EMAIL_FROM=Lantell <notifications@lantell.io>` on the app project.
-- **Product screenshots.** `public/shots/` is empty, so the screenshot section is hidden. It appears
-  as soon as the images are there (see `components/site/Screenshots.tsx` for the filenames).
+- **Product screenshots.** `public/shots/` is empty, so the screenshot section is hidden. Drop in
+  any of `checklist.png`, `tenant-portal.png`, `release-memo.png`, `activity.png` (roughly 1440x900,
+  taken on a signed-in account) and the section appears on its own, with the slots that have files.
 - **A founder portrait.** Drop `public/founder.jpg` in and the "Behind Lantell" section grows a
   photo; without it the note stands alone.
