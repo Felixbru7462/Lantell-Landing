@@ -8,9 +8,10 @@ import type { Config } from "tailwindcss";
  *
  * - The whole blue family runs hotter than the spec's #5B7E98. That value is 25% saturation; the
  *   maroon it replaced was 64%, which is the entire reason the page read calmer rather than any
- *   difference of hue. These sit at ~50%, holding one hue (205 deg) and varying lightness by role.
- *   Saturation is nearly free here: every pair still clears its bar, and there is headroom to 70%
- *   if the page should shout louder. Note that raising saturation at a fixed HSL lightness LOWERS
+ *   difference of hue. `brand` now sits at 65% — deliberately matching that maroon's presence —
+ *   holding one hue (205 deg) and varying lightness by role. This is past 'slate': it is a
+ *   committed blue, chosen on purpose after the calmer versions read too polite. Note that
+ *   raising saturation at a fixed HSL lightness LOWERS
  *   luminance for blue hues, so each step down in calm needs a step down in lightness to hold
  *   contrast — which is why these are not simply the spec values with the saturation slider moved.
  * - `attention` (#96600F) is the spec's status-attention #B8791E darkened from 3.50:1 to 5.10:1,
@@ -37,10 +38,10 @@ const config: Config = {
         hairline: "rgba(23,17,15,0.10)", // section dividers, card and input borders
 
         // Brand
-        brand: "#34719D", // text, links, eyebrow labels, button grounds
-        "brand-fill": "#4382B1", // rules, icon strokes, decorative fills
-        "brand-hover": "#285B80", // button hover / active
-        "brand-on-dark": "#84AECD", // the one accent on the charcoal bands
+        brand: "#2471A8", // text, links, eyebrow labels, button grounds
+        "brand-fill": "#3281BD", // rules, icon strokes, decorative fills
+        "brand-hover": "#1B5883", // button hover / active
+        "brand-on-dark": "#79B0D8", // the one accent on the charcoal bands
 
         // Status — only where semantically true
         positive: "#2F7D4F",
