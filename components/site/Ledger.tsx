@@ -27,19 +27,19 @@ export function Ledger() {
   const [visibility, setVisibility] = useState(100);
 
   return (
-    <section id="ledger" className="bg-[#1A1C1E] text-white relative overflow-hidden">
+    <section id="ledger" className="bg-dark text-page relative overflow-hidden">
       <div className="relative max-w-[120rem] mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <div className="grid lg:grid-cols-12 gap-8 mb-14">
           <div className="lg:col-span-6">
-            <Eyebrow label="THE IMMUTABLE LEDGER / AUDIT STREAM" tone="coral" className="mb-5" />
-            <h2 className="font-heading font-bold text-white text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
+            <Eyebrow label="THE IMMUTABLE LEDGER / AUDIT STREAM" tone="dark" className="mb-5" />
+            <h2 className="font-heading font-bold text-page text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
               Every action,
               <br />
               permanently recorded.
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="font-body text-white/60 text-lg leading-[1.6]">
+            <p className="font-body text-page/60 text-lg leading-[1.6]">
               The audit trail is append-only - the database itself refuses updates and deletes.
               Scrub the timeline below to move through a project&apos;s history; nothing is ever
               overwritten.
@@ -47,51 +47,51 @@ export function Ledger() {
           </div>
         </div>
 
-        <div className="border border-white/15 bg-white/[0.02]">
-          <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-white/15">
+        <div className="border border-page/15 bg-page/[0.02]">
+          <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-page/15">
             <div className="flex items-center gap-2 min-w-0">
-              <Lock size={14} className="text-[#008545] shrink-0" />
-              <span className="font-mono text-[11px] tracking-wider text-white/50 uppercase truncate">
+              <Lock size={14} className="text-positive-on-dark shrink-0" />
+              <span className="font-mono text-[11px] tracking-wider text-page/50 uppercase truncate">
                 AUDIT_STREAM / PROJECT 8829-TI / SAMPLE BUILDOUT
               </span>
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
-              <span className="w-2 h-2 rounded-full bg-[#008545]" />
-              <span className="font-mono text-[11px] tracking-wider text-[#008545] uppercase">
+              <span className="w-2 h-2 rounded-full bg-positive-on-dark" />
+              <span className="font-mono text-[11px] tracking-wider text-positive-on-dark uppercase">
                 SAMPLE
               </span>
             </div>
           </div>
 
-          <div className="divide-y divide-white/[0.06]">
+          <div className="divide-y divide-page/[0.06]">
             {EVENTS.map((entry, index) => (
               <div
                 key={`${entry.time}-${entry.event}`}
-                className="grid grid-cols-3 divide-x divide-white/[0.06] font-mono text-[11px] transition-opacity sm:grid-cols-4 sm:text-xs"
+                className="grid grid-cols-3 divide-x divide-page/[0.06] font-mono text-[11px] transition-opacity sm:grid-cols-4 sm:text-xs"
                 style={{ opacity: rowOpacity(index, visibility) }}
               >
-                <span className="px-3 py-3.5 text-center tracking-wider text-white/40">
+                <span className="px-3 py-3.5 text-center tracking-wider text-page/40">
                   {entry.time}
                 </span>
-                <span className="hidden px-3 py-3.5 text-center tracking-wider text-white/60 sm:block">
+                <span className="hidden px-3 py-3.5 text-center tracking-wider text-page/60 sm:block">
                   {entry.actor}
                 </span>
-                <span className="truncate px-3 py-3.5 text-center tracking-wider text-[#F26C6C]">
+                <span className="truncate px-3 py-3.5 text-center tracking-wider text-brand-on-dark">
                   {entry.event}
                 </span>
-                <span className="px-3 py-3.5 text-center tracking-wider text-white/50">
+                <span className="px-3 py-3.5 text-center tracking-wider text-page/50">
                   {entry.status}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="px-5 py-5 border-t border-white/15">
+          <div className="px-5 py-5 border-t border-page/15">
             <div className="flex items-center justify-between mb-2.5">
-              <span className="font-mono text-[10px] tracking-wider text-white/40 uppercase">
+              <span className="font-mono text-[10px] tracking-wider text-page/40 uppercase">
                 TIMELINE_SCRUB / 2026.09.20
               </span>
-              <span className="font-mono text-[10px] tracking-wider text-white/40 uppercase">
+              <span className="font-mono text-[10px] tracking-wider text-page/40 uppercase">
                 {visibility}% VISIBILITY
               </span>
             </div>
@@ -102,7 +102,7 @@ export function Ledger() {
               value={visibility}
               onChange={(event) => setVisibility(Number(event.target.value))}
               aria-label="Scrub the audit timeline"
-              className="w-full accent-[#F26C6C] h-1 cursor-pointer"
+              className="w-full accent-brand-on-dark h-1 cursor-pointer"
             />
           </div>
         </div>

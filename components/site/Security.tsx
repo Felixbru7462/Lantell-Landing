@@ -21,19 +21,19 @@ const GUARANTEES = [
 
 export function Security() {
   return (
-    <section id="security" className="bg-white">
+    <section id="security" className="bg-page">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <div className="grid lg:grid-cols-12 gap-8 mb-14">
           <div className="lg:col-span-5">
             <Eyebrow label="DATA CUSTODY / SECURITY" className="mb-5" />
-            <h2 className="font-heading font-bold text-[#1A1C1E] text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
+            <h2 className="font-heading font-bold text-ink text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
               Built to keep
               <br />
               documents contained.
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="font-body text-[#1A1C1E]/70 text-lg leading-[1.6]">
+            <p className="font-body text-ink/70 text-lg leading-[1.6]">
               You are handing over other people&apos;s leases, insurance certificates and lien
               waivers. The boundaries that keep them separate are enforced in the database, not in
               the interface.
@@ -43,16 +43,16 @@ export function Security() {
 
         <div className="grid gap-x-10 gap-y-8 sm:grid-cols-3">
           {GUARANTEES.map((item) => (
-            <div key={item.label} className="border-t border-[#1A1C1E]/15 pt-5">
-              <span className="font-mono text-[10px] tracking-wider text-[#8B1F1F] uppercase">
+            <div key={item.label} className="border-t border-ink/15 pt-5">
+              <span className="font-mono text-[10px] tracking-wider text-brand uppercase">
                 {item.label}
               </span>
-              <p className="mt-2.5 font-body text-[#1A1C1E]/70 leading-[1.6]">{item.body}</p>
+              <p className="mt-2.5 font-body text-ink/70 leading-[1.6]">{item.body}</p>
             </div>
           ))}
         </div>
 
-        <p className="mt-12 font-mono text-[10px] tracking-wider text-[#1A1C1E]/50 uppercase">
+        <p className="mt-12 font-mono text-[10px] tracking-wider text-ink/50 uppercase">
           Hosted on Vercel and Supabase Postgres
         </p>
       </div>

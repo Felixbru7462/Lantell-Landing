@@ -14,7 +14,7 @@ export function GridLines({ tone = "light" }: { tone?: "light" | "dark" }) {
           {Array.from({ length: 11 }).map((_, i) => (
             <div
               key={i}
-              className={`h-full border-r ${dark ? "border-white" : "border-[#1A1C1E]/[0.04]"}`}
+              className={`h-full border-r ${dark ? "border-page" : "border-ink/[0.04]"}`}
             />
           ))}
         </div>

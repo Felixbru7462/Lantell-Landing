@@ -27,7 +27,7 @@ function withMarkers(text: string) {
     return (
       <mark
         key={index}
-        className="bg-[#8B1F1F]/10 text-[#8B1F1F] font-mono text-[12px] px-1.5 py-0.5"
+        className="bg-brand/10 text-brand font-mono text-[12px] px-1.5 py-0.5"
       >
         {chunk.slice(2, -2)}
       </mark>
@@ -52,31 +52,31 @@ export function LegalPage({
   return (
     <>
       <Header />
-      <main id="top" className="bg-white">
+      <main id="top" className="bg-page">
         <div className="max-w-[120rem] mx-auto px-6 lg:px-10 pt-32 lg:pt-40 pb-20 lg:pb-28">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
-                <span className="font-mono text-[10px] tracking-wider text-[#8B1F1F] uppercase">
+                <span className="font-mono text-[10px] tracking-wider text-brand uppercase">
                   Legal
                 </span>
-                <h1 className="mt-4 font-heading font-bold text-[#1A1C1E] text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
+                <h1 className="mt-4 font-heading font-bold text-ink text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
                   {title}
                 </h1>
-                <p className="mt-5 font-mono text-[10px] tracking-wider text-[#1A1C1E]/50 uppercase">
+                <p className="mt-5 font-mono text-[10px] tracking-wider text-ink/50 uppercase">
                   Last updated {updated}
                 </p>
 
-                <nav className="mt-8 hidden lg:block border-t border-[#1A1C1E]/15 pt-5">
+                <nav className="mt-8 hidden lg:block border-t border-ink/15 pt-5">
                   <ol className="space-y-2.5">
                     {sections.map((section, index) => (
                       <li key={section.id} className="flex gap-3">
-                        <span className="font-mono text-[10px] text-[#1A1C1E]/35 pt-1 tabular-nums">
+                        <span className="font-mono text-[10px] text-ink/35 pt-1 tabular-nums">
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         <a
                           href={`#${section.id}`}
-                          className="font-body text-sm text-[#1A1C1E]/60 hover:text-[#8B1F1F] transition-colors"
+                          className="font-body text-sm text-ink/60 hover:text-brand transition-colors"
                         >
                           {section.heading}
                         </a>
@@ -89,29 +89,29 @@ export function LegalPage({
 
             <div className="lg:col-span-7 lg:col-start-6">
               {draft && (
-                <div className="mb-10 border border-[#8B1F1F]/30 bg-[#8B1F1F]/[0.04] p-5">
-                  <span className="font-mono text-[10px] tracking-wider text-[#8B1F1F] uppercase">
+                <div className="mb-10 border border-brand/30 bg-brand/[0.04] p-5">
+                  <span className="font-mono text-[10px] tracking-wider text-brand uppercase">
                     Draft / not yet in force
                   </span>
-                  <p className="mt-2.5 font-body text-[#1A1C1E]/70 leading-[1.6]">
+                  <p className="mt-2.5 font-body text-ink/70 leading-[1.6]">
                     This document is a working draft. The highlighted parts still need to be filled
                     in, and it has not been reviewed by a lawyer. It is not legal advice.
                   </p>
                 </div>
               )}
 
-              <p className="font-body text-[#1A1C1E]/70 text-lg leading-[1.6]">
+              <p className="font-body text-ink/70 text-lg leading-[1.6]">
                 {withMarkers(intro)}
               </p>
 
               {sections.map((section, index) => (
                 <section key={section.id} id={section.id} className="mt-12 scroll-mt-28">
-                  <div className="flex gap-4 border-t border-[#1A1C1E]/15 pt-5">
-                    <span className="font-mono text-[10px] text-[#1A1C1E]/35 pt-2 tabular-nums">
+                  <div className="flex gap-4 border-t border-ink/15 pt-5">
+                    <span className="font-mono text-[10px] text-ink/35 pt-2 tabular-nums">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <h2 className="font-heading font-semibold text-[#1A1C1E] text-2xl tracking-[-0.02em]">
+                      <h2 className="font-heading font-semibold text-ink text-2xl tracking-[-0.02em]">
                         {section.heading}
                       </h2>
                       <div className="mt-4 space-y-4">
@@ -120,8 +120,8 @@ export function LegalPage({
                             <ul key={blockIndex} className="space-y-2.5">
                               {block.map((item) => (
                                 <li key={item} className="flex gap-3">
-                                  <span className="text-[#8B1F1F] pt-1.5 leading-none">-</span>
-                                  <span className="font-body text-[#1A1C1E]/70 leading-[1.6]">
+                                  <span className="text-brand pt-1.5 leading-none">-</span>
+                                  <span className="font-body text-ink/70 leading-[1.6]">
                                     {withMarkers(item)}
                                   </span>
                                 </li>
@@ -130,7 +130,7 @@ export function LegalPage({
                           ) : (
                             <p
                               key={blockIndex}
-                              className="font-body text-[#1A1C1E]/70 leading-[1.6]"
+                              className="font-body text-ink/70 leading-[1.6]"
                             >
                               {withMarkers(block)}
                             </p>
@@ -143,22 +143,22 @@ export function LegalPage({
                 </section>
               ))}
 
-              <div className="mt-14 border-t border-[#1A1C1E]/15 pt-6 flex flex-wrap gap-x-8 gap-y-3">
+              <div className="mt-14 border-t border-ink/15 pt-6 flex flex-wrap gap-x-8 gap-y-3">
                 <Link
                   href="/"
-                  className="font-mono text-[11px] tracking-wider text-[#1A1C1E]/50 uppercase hover:text-[#8B1F1F] transition-colors"
+                  className="font-mono text-[11px] tracking-wider text-ink/50 uppercase hover:text-brand transition-colors"
                 >
                   Back to lantell.io
                 </Link>
                 <Link
                   href="/privacy"
-                  className="font-mono text-[11px] tracking-wider text-[#1A1C1E]/50 uppercase hover:text-[#8B1F1F] transition-colors"
+                  className="font-mono text-[11px] tracking-wider text-ink/50 uppercase hover:text-brand transition-colors"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms"
-                  className="font-mono text-[11px] tracking-wider text-[#1A1C1E]/50 uppercase hover:text-[#8B1F1F] transition-colors"
+                  className="font-mono text-[11px] tracking-wider text-ink/50 uppercase hover:text-brand transition-colors"
                 >
                   Terms of Service
                 </Link>

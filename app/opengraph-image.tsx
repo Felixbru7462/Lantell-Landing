@@ -16,6 +16,16 @@ function font(file: string) {
   return fs.readFileSync(path.join(process.cwd(), "public", "fonts", file));
 }
 
+/**
+ * Satori never sees tailwind.config.ts, so the palette is restated here. Keep these in step with
+ * the `dark`, `page`, `brand-on-dark` and `brand-fill` tokens — this card is a dark surface, so it
+ * uses the lightened accent rather than `brand`.
+ */
+const GROUND = "#2A2D33";
+const TEXT = "#FCFBF8";
+const ACCENT = "#8FAEC4";
+const RULE = "#5B7E98";
+
 export default async function OpengraphImage() {
   const [regular, bold] = [font("InterTight-Regular.ttf"), font("InterTight-Bold.ttf")];
 
@@ -29,19 +39,30 @@ export default async function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#1A1C1E",
+          backgroundColor: GROUND,
           padding: "72px",
           fontFamily: "Inter Tight",
         }}
       >
         {/* The page's column rules, lifted to 10%: at feed size 6% disappears entirely */}
-        <div style={{ position: "absolute", inset: 0, display: "flex" }}>
+        <div
+          style={{
+            position: "absolute",
+            // Satori ignores the `inset` shorthand, so the overlay collapsed to nothing and
+            // these rules never painted. Explicit edges instead.
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+          }}
+        >
           {Array.from({ length: 12 }).map((_, i) => (
             <div
               key={i}
               style={{
                 flex: 1,
-                borderRight: "1px solid rgba(255,255,255,0.10)",
+                borderRight: "1px solid rgba(252,251,248,0.10)",
               }}
             />
           ))}
@@ -53,20 +74,20 @@ export default async function OpengraphImage() {
               display: "flex",
               width: 34,
               height: 34,
-              border: "2px solid #FFFFFF",
+              border: `2px solid ${TEXT}`,
               alignItems: "center",
               justifyContent: "center",
               marginRight: 14,
             }}
           >
-            <div style={{ display: "flex", width: 13, height: 13, backgroundColor: "#F26C6C" }} />
+            <div style={{ display: "flex", width: 13, height: 13, backgroundColor: ACCENT }} />
           </div>
           <div
             style={{
               display: "flex",
               fontSize: 30,
               fontWeight: 700,
-              color: "#FFFFFF",
+              color: TEXT,
               letterSpacing: "-0.02em",
             }}
           >
@@ -82,7 +103,7 @@ export default async function OpengraphImage() {
               fontWeight: 700,
               lineHeight: 1,
               letterSpacing: "-0.03em",
-              color: "#FFFFFF",
+              color: TEXT,
             }}
           >
             Every Draw,
@@ -94,7 +115,7 @@ export default async function OpengraphImage() {
               fontWeight: 700,
               lineHeight: 1,
               letterSpacing: "-0.03em",
-              color: "#F26C6C",
+              color: ACCENT,
             }}
           >
             Documented
@@ -104,7 +125,7 @@ export default async function OpengraphImage() {
               display: "flex",
               marginTop: 28,
               fontSize: 28,
-              color: "rgba(255,255,255,0.6)",
+              color: "rgba(252,251,248,0.6)",
               maxWidth: 980,
             }}
           >
@@ -120,12 +141,12 @@ export default async function OpengraphImage() {
             position: "relative",
           }}
         >
-          <div style={{ display: "flex", width: 90, height: 5, backgroundColor: "#8B1F1F" }} />
+          <div style={{ display: "flex", width: 90, height: 5, backgroundColor: RULE }} />
           <div
             style={{
               display: "flex",
               fontSize: 22,
-              color: "rgba(255,255,255,0.4)",
+              color: "rgba(252,251,248,0.4)",
               letterSpacing: "0.12em",
             }}
           >

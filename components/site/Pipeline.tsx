@@ -30,15 +30,15 @@ const STAGES = [
 
 export function Pipeline() {
   return (
-    <section id="allowance" className="bg-[#F4F5F6] border-y border-[#E4E6E8]">
+    <section id="allowance" className="bg-band border-y border-hairline">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <Eyebrow label="THE ALLOWANCE ENGINE / PIPELINE" className="mb-5" />
-        <h2 className="font-heading font-bold text-[#1A1C1E] text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02] mb-4 max-w-2xl">
+        <h2 className="font-heading font-bold text-ink text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02] mb-4 max-w-2xl">
           From document to release,
           <br />
           without the chase.
         </h2>
-        <p className="font-body text-[#1A1C1E]/70 text-lg leading-[1.6] max-w-xl mb-14 lg:mb-20">
+        <p className="font-body text-ink/70 text-lg leading-[1.6] max-w-xl mb-14 lg:mb-20">
           Every draw walks the same path. Each stage is gated - nothing advances until the one
           before it is verified and stamped.
         </p>
@@ -48,22 +48,22 @@ export function Pipeline() {
             {STAGES.map(({ icon: Icon, stage, title, body, meta, status }) => (
               <div key={stage} className="relative flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="relative z-10 w-16 h-16 rounded-full bg-white border-2 border-[#8B1F1F] flex items-center justify-center shrink-0">
-                    <Icon size={24} className="text-[#8B1F1F]" />
+                  <div className="relative z-10 w-16 h-16 rounded-full bg-page border-2 border-brand-fill flex items-center justify-center shrink-0">
+                    <Icon size={24} className="text-brand-fill" />
                   </div>
-                  <span className="font-mono text-xs tracking-wider text-[#1A1C1E]/40 uppercase">
+                  <span className="font-mono text-xs tracking-wider text-ink/40 uppercase">
                     {stage}
                   </span>
                 </div>
-                <h3 className="font-heading font-semibold text-[#1A1C1E] text-2xl tracking-[-0.02em] mb-3">
+                <h3 className="font-heading font-semibold text-ink text-2xl tracking-[-0.02em] mb-3">
                   {title}
                 </h3>
-                <p className="font-body text-[#1A1C1E]/60 leading-[1.6] mb-6 max-w-xs">{body}</p>
-                <div className="mt-auto flex items-center justify-between border-t border-[#1A1C1E]/10 pt-4">
-                  <span className="font-mono text-[10px] tracking-wider text-[#1A1C1E]/50 uppercase">
+                <p className="font-body text-ink/60 leading-[1.6] mb-6 max-w-xs">{body}</p>
+                <div className="mt-auto flex items-center justify-between border-t border-ink/10 pt-4">
+                  <span className="font-mono text-[10px] tracking-wider text-ink/50 uppercase">
                     {meta}
                   </span>
-                  <span className="font-mono text-[10px] tracking-wider text-[#008545] uppercase">
+                  <span className="font-mono text-[10px] tracking-wider text-ink/60 uppercase">
                     {/* The bullet is deliberately drawn by the system mono: JetBrains Mono has no
                         U+25CF, and next/font's metric-adjusted fallback renders it 2px wider than
                         the reference design (adjustFontFallback is a no-op in Next 16). */}

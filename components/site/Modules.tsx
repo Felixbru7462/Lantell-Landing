@@ -42,19 +42,19 @@ const MODULES = [
 
 export function Modules() {
   return (
-    <section id="features" className="bg-white">
+    <section id="features" className="bg-page">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <div className="grid lg:grid-cols-12 gap-8 mb-14 lg:mb-20">
           <div className="lg:col-span-5">
             <Eyebrow label="THE PLATFORM / 06 MODULES" className="mb-5" />
-            <h2 className="font-heading font-bold text-[#1A1C1E] text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
+            <h2 className="font-heading font-bold text-ink text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
               One system for the
               <br />
               entire buildout.
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="font-body text-[#1A1C1E]/70 text-lg leading-[1.6]">
+            <p className="font-body text-ink/70 text-lg leading-[1.6]">
               Tenant improvements live or die on documentation. Lantell replaces shared drives,
               email chains, and spreadsheets with a single source of truth - so allowances release
               on time and nothing falls through the cracks.
@@ -62,27 +62,27 @@ export function Modules() {
           </div>
         </div>
 
-        <div className="grid gap-px border border-[#E4E6E8] bg-[#E4E6E8] sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3">
           {MODULES.map(({ icon: Icon, tag, title, body }) => (
             <div
               key={tag}
-              className="bg-white p-8 lg:p-10 group hover:bg-[#F4F5F6] transition-colors"
+              className="bg-page p-8 lg:p-10 group hover:bg-band transition-colors"
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 border border-[#1A1C1E] flex items-center justify-center group-hover:bg-[#8B1F1F] group-hover:border-[#8B1F1F] transition-colors">
+                <div className="w-12 h-12 border border-ink flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-colors">
                   <Icon
                     size={22}
-                    className="text-[#1A1C1E] group-hover:text-white transition-colors"
+                    className="text-ink group-hover:text-page transition-colors"
                   />
                 </div>
-                <span className="font-mono text-[10px] tracking-wider text-[#1A1C1E]/40 uppercase">
+                <span className="font-mono text-[10px] tracking-wider text-ink/40 uppercase">
                   {tag}
                 </span>
               </div>
-              <h3 className="font-heading font-semibold text-[#1A1C1E] text-xl lg:text-2xl tracking-[-0.02em] mb-3">
+              <h3 className="font-heading font-semibold text-ink text-xl lg:text-2xl tracking-[-0.02em] mb-3">
                 {title}
               </h3>
-              <p className="font-body text-[#1A1C1E]/60 leading-[1.6]">{body}</p>
+              <p className="font-body text-ink/60 leading-[1.6]">{body}</p>
             </div>
           ))}
         </div>

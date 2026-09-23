@@ -35,28 +35,28 @@ export function AnalyticsOptOut() {
   }
 
   return (
-    <div className="mt-6 border border-[#1A1C1E]/15 bg-[#F4F5F6] p-5">
-      <span className="font-mono text-[10px] tracking-wider text-[#1A1C1E]/50 uppercase">
+    <div className="mt-6 border border-ink/15 bg-band p-5">
+      <span className="font-mono text-[10px] tracking-wider text-ink/50 uppercase">
         Analytics on this browser
       </span>
 
       {state === "loading" && (
-        <p className="mt-2.5 font-body text-[#1A1C1E]/50 leading-[1.6]">Checking...</p>
+        <p className="mt-2.5 font-body text-ink/50 leading-[1.6]">Checking...</p>
       )}
 
       {state === "inactive" && (
-        <p className="mt-2.5 font-body text-[#1A1C1E]/70 leading-[1.6]">
+        <p className="mt-2.5 font-body text-ink/70 leading-[1.6]">
           Analytics is not running on this page, so there is nothing to turn off.
         </p>
       )}
 
       {(state === "on" || state === "off") && (
         <>
-          <p className="mt-2.5 flex items-center gap-2.5 font-body text-[#1A1C1E]/70 leading-[1.6]">
+          <p className="mt-2.5 flex items-center gap-2.5 font-body text-ink/70 leading-[1.6]">
             {state === "on" ? (
-              <CircleCheck size={16} className="shrink-0 text-[#008545]" />
+              <CircleCheck size={16} className="shrink-0 text-positive" />
             ) : (
-              <CircleSlash size={16} className="shrink-0 text-[#8B1F1F]" />
+              <CircleSlash size={16} className="shrink-0 text-ink-soft" />
             )}
             {state === "on"
               ? "Analytics is currently on."
@@ -65,11 +65,11 @@ export function AnalyticsOptOut() {
           <button
             type="button"
             onClick={toggle}
-            className="mt-4 border border-[#1A1C1E] bg-white px-5 py-2.5 font-body text-sm font-medium text-[#1A1C1E] transition-colors hover:bg-[#1A1C1E] hover:text-white"
+            className="mt-4 border border-ink bg-page px-5 py-2.5 font-body text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-page"
           >
             {state === "on" ? "Turn analytics off" : "Turn analytics back on"}
           </button>
-          <p className="mt-3 font-body text-sm text-[#1A1C1E]/50 leading-[1.6]">
+          <p className="mt-3 font-body text-sm text-ink/50 leading-[1.6]">
             The choice is stored in this browser only, so it will not follow you to another device.
           </p>
         </>

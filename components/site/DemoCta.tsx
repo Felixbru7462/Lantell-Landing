@@ -46,45 +46,45 @@ export function DemoCta() {
   }
 
   return (
-    <section id="cta" className="bg-white">
+    <section id="cta" className="bg-page">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-7">
             <Eyebrow label="GET STARTED / BOOK A DEMO" className="mb-5" />
-            <h2 className="font-heading font-bold text-[#1A1C1E] text-4xl lg:text-6xl tracking-[-0.03em] leading-[1.02]">
+            <h2 className="font-heading font-bold text-ink text-4xl lg:text-6xl tracking-[-0.03em] leading-[1.02]">
               Stop chasing documents.
               <br />
-              <span className="text-[#8B1F1F]">Start releasing.</span>
+              <span className="text-brand">Start releasing.</span>
             </h2>
 
             <div className="mt-8 space-y-3.5">
               {PROMISES.map((promise) => (
                 <div key={promise} className="flex items-center gap-3">
-                  <CircleCheck size={18} className="text-[#008545] shrink-0" />
-                  <span className="font-body text-[#1A1C1E]/80 text-lg">{promise}</span>
+                  <CircleCheck size={18} className="text-brand shrink-0" />
+                  <span className="font-body text-ink/80 text-lg">{promise}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="lg:col-span-5 lg:col-start-8">
-            <div className="border border-[#1A1C1E] bg-white p-7 lg:p-9">
-              <span className="font-mono text-[10px] tracking-wider text-[#1A1C1E]/40 uppercase">
+            <div className="border border-ink bg-page p-7 lg:p-9">
+              <span className="font-mono text-[10px] tracking-wider text-ink/40 uppercase">
                 DEMO_REQUEST / FORM_ID: CTA-001
               </span>
 
               {status === "sent" ? (
                 <div className="mt-5">
                   <div className="flex items-center gap-2.5">
-                    <CircleCheck size={18} className="text-[#008545] shrink-0" />
-                    <span className="font-mono text-[11px] tracking-wider text-[#008545] uppercase">
+                    <CircleCheck size={18} className="text-positive shrink-0" />
+                    <span className="font-mono text-[11px] tracking-wider text-positive uppercase">
                       Request received
                     </span>
                   </div>
-                  <p className="font-heading font-semibold text-[#1A1C1E] text-xl mt-3 leading-tight">
+                  <p className="font-heading font-semibold text-ink text-xl mt-3 leading-tight">
                     Thanks - I&apos;ll reply within one business day.
                   </p>
-                  <p className="font-body text-[#1A1C1E]/60 mt-2 leading-[1.6]">
+                  <p className="font-body text-ink/60 mt-2 leading-[1.6]">
                     Have a project in mind? Bring it to the call and we&apos;ll map it live.
                   </p>
                 </div>
@@ -92,7 +92,7 @@ export function DemoCta() {
                 <form className="relative mt-5" onSubmit={handleSubmit}>
                   <label
                     htmlFor="demo-email"
-                    className="block font-mono text-[11px] tracking-wider text-[#1A1C1E]/60 uppercase mb-2"
+                    className="block font-mono text-[11px] tracking-wider text-ink/60 uppercase mb-2"
                   >
                     Work Email
                   </label>
@@ -105,14 +105,14 @@ export function DemoCta() {
                     value={email}
                     disabled={status === "sending"}
                     onChange={(event) => setEmail(event.target.value)}
-                    className="w-full border border-[#E4E6E8] bg-[#F4F5F6] px-4 py-3.5 font-body text-[#1A1C1E] placeholder:text-[#1A1C1E]/30 focus:outline-none focus:border-[#8B1F1F] focus:bg-white transition-colors"
+                    className="w-full border border-hairline bg-band px-4 py-3.5 font-body text-ink placeholder:text-ink/30 focus:outline-none focus:border-brand focus:bg-page transition-colors"
                   />
                   <label
                     htmlFor="demo-message"
-                    className="mt-5 block font-mono text-[11px] tracking-wider text-[#1A1C1E]/60 uppercase"
+                    className="mt-5 block font-mono text-[11px] tracking-wider text-ink/60 uppercase"
                   >
                     Anything specific?{" "}
-                    <span className="text-[#1A1C1E]/35">(optional)</span>
+                    <span className="text-ink/35">(optional)</span>
                   </label>
                   <textarea
                     id="demo-message"
@@ -122,7 +122,7 @@ export function DemoCta() {
                     value={message}
                     disabled={status === "sending"}
                     onChange={(event) => setMessage(event.target.value)}
-                    className="mt-2 w-full resize-none border border-[#E4E6E8] bg-[#F4F5F6] px-4 py-3.5 font-body text-[#1A1C1E] placeholder:text-[#1A1C1E]/30 focus:outline-none focus:border-[#8B1F1F] focus:bg-white transition-colors"
+                    className="mt-2 w-full resize-none border border-hairline bg-band px-4 py-3.5 font-body text-ink placeholder:text-ink/30 focus:outline-none focus:border-brand focus:bg-page transition-colors"
                   />
 
                   {/* Honeypot: off-screen rather than display:none, which bots skip. */}
@@ -142,7 +142,7 @@ export function DemoCta() {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group w-full mt-5 bg-[#8B1F1F] hover:bg-[#6B1717] disabled:bg-[#8B1F1F]/60 text-white font-body font-medium px-6 py-4 flex items-center justify-center gap-2.5 transition-colors"
+                    className="group w-full mt-5 bg-brand hover:bg-brand-hover disabled:bg-brand/60 text-page font-body font-medium px-6 py-4 flex items-center justify-center gap-2.5 transition-colors"
                   >
                     {status === "sending" ? "Sending..." : "Book a Demo"}
                     {status !== "sending" && (
@@ -154,20 +154,20 @@ export function DemoCta() {
                   </button>
 
                   {status === "error" && (
-                    <p className="mt-3 flex items-center gap-2 font-body text-sm text-[#8B1F1F]">
+                    <p className="mt-3 flex items-center gap-2 font-body text-sm text-attention">
                       <CircleAlert size={16} className="shrink-0" />
                       That didn&apos;t send. Try again in a moment.
                     </p>
                   )}
-                  <p className="mt-4 font-mono text-[10px] tracking-wider text-[#1A1C1E]/40 uppercase text-center">
+                  <p className="mt-4 font-mono text-[10px] tracking-wider text-ink/40 uppercase text-center">
                     We respond within one business day
                   </p>
                   {/* A form that takes an address should say what happens to it, in one line. */}
-                  <p className="mt-3 font-body text-xs text-[#1A1C1E]/45 leading-[1.6] text-center">
+                  <p className="mt-3 font-body text-xs text-ink/45 leading-[1.6] text-center">
                     Used to reply to you, nothing else.{" "}
                     <a
                       href="/privacy"
-                      className="underline decoration-[#1A1C1E]/20 underline-offset-2 hover:text-[#8B1F1F] hover:decoration-[#8B1F1F]"
+                      className="underline decoration-ink/20 underline-offset-2 hover:text-brand hover:decoration-brand"
                     >
                       Privacy Policy
                     </a>

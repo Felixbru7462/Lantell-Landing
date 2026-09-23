@@ -24,14 +24,14 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        solid ? "bg-white/90 backdrop-blur-md border-b border-[#E4E6E8]" : "bg-transparent"
+        solid ? "bg-page/90 backdrop-blur-md border-b border-hairline" : "bg-transparent"
       }`}
     >
       <div className="max-w-[120rem] mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a href="/#top" className="flex items-center gap-2.5 group">
             <Mark />
-            <span className="font-heading font-bold text-[#1A1C1E] text-xl tracking-[-0.02em]">
+            <span className="font-heading font-bold text-ink text-xl tracking-[-0.02em]">
               LANTELL
             </span>
           </a>
@@ -41,7 +41,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-body text-sm text-[#1A1C1E]/70 hover:text-[#1A1C1E] transition-colors"
+                className="font-body text-sm text-ink/70 hover:text-ink transition-colors"
               >
                 {link.label}
               </a>
@@ -51,13 +51,13 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-5">
             <a
               href="https://app.lantell.io/sign-in"
-              className="font-body text-sm text-[#1A1C1E]/70 hover:text-[#1A1C1E] transition-colors"
+              className="font-body text-sm text-ink/70 hover:text-ink transition-colors"
             >
               Sign in
             </a>
             <a
               href="/#cta"
-              className="font-body text-sm font-medium text-white bg-[#8B1F1F] hover:bg-[#6B1717] px-5 py-2.5 transition-colors"
+              className="font-body text-sm font-medium text-page bg-brand hover:bg-brand-hover px-5 py-2.5 transition-colors"
             >
               Book a Demo
             </a>
@@ -66,7 +66,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="lg:hidden text-[#1A1C1E]"
+            className="lg:hidden text-ink"
             aria-label="Menu"
             aria-expanded={menuOpen}
           >
@@ -76,14 +76,14 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-[#E4E6E8]">
+        <div className="lg:hidden bg-page border-t border-hairline">
           <div className="px-6 py-6 flex flex-col gap-5">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="font-body text-base text-[#1A1C1E]"
+                className="font-body text-base text-ink"
               >
                 {link.label}
               </a>
@@ -91,7 +91,7 @@ export function Header() {
             <a
               href="/#cta"
               onClick={() => setMenuOpen(false)}
-              className="font-body text-sm font-medium text-white bg-[#8B1F1F] px-5 py-3 text-center"
+              className="font-body text-sm font-medium text-page bg-brand px-5 py-3 text-center"
             >
               Book a Demo
             </a>

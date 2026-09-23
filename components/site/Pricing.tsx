@@ -23,11 +23,11 @@ const TERMS = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="bg-[#F4F5F6] border-y border-[#E4E6E8]">
+    <section id="pricing" className="bg-band border-y border-hairline">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-10 py-14 lg:py-20">
         <Eyebrow label="PRICING / HOW IT'S METERED" className="mb-10" />
 
-        <h2 className="mb-12 max-w-2xl font-heading font-bold text-[#1A1C1E] text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
+        <h2 className="mb-12 max-w-2xl font-heading font-bold text-ink text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
           Priced by the project,
           <br />
           not the seat.
@@ -35,16 +35,16 @@ export function Pricing() {
 
         <div className="grid gap-x-10 gap-y-8 sm:grid-cols-3">
           {TERMS.map((term) => (
-            <div key={term.label} className="border-t border-[#1A1C1E]/15 pt-5">
-              <span className="font-mono text-[10px] tracking-wider text-[#8B1F1F] uppercase">
+            <div key={term.label} className="border-t border-ink/15 pt-5">
+              <span className="font-mono text-[10px] tracking-wider text-brand uppercase">
                 {term.label}
               </span>
-              <p className="mt-2.5 font-body text-[#1A1C1E]/70 leading-[1.6]">{term.body}</p>
+              <p className="mt-2.5 font-body text-ink/70 leading-[1.6]">{term.body}</p>
             </div>
           ))}
         </div>
 
-        <p className="mt-10 font-mono text-[10px] tracking-wider text-[#1A1C1E]/50 uppercase">
+        <p className="mt-10 font-mono text-[10px] tracking-wider text-ink/50 uppercase">
           Contracts are set per customer - exact numbers come on the call
         </p>
       </div>

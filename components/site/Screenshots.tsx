@@ -43,12 +43,12 @@ export function Screenshots() {
   if (present.length === 0) return null;
 
   return (
-    <section id="product" className="bg-[#F4F5F6] border-y border-[#E4E6E8]">
+    <section id="product" className="bg-band border-y border-hairline">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <div className="grid lg:grid-cols-12 gap-8 mb-14">
           <div className="lg:col-span-5">
             <Eyebrow label="THE PRODUCT / SCREENS" className="mb-5" />
-            <h2 className="font-heading font-bold text-[#1A1C1E] text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
+            <h2 className="font-heading font-bold text-ink text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.02]">
               What it looks
               <br />
               like in use.
@@ -56,15 +56,15 @@ export function Screenshots() {
           </div>
         </div>
 
-        <div className="grid gap-px border border-[#E4E6E8] bg-[#E4E6E8] lg:grid-cols-2">
+        <div className="grid gap-px border border-hairline bg-hairline lg:grid-cols-2">
           {present.map((shot) => (
             <figure
               key={shot.file}
-              className={`bg-white p-5 lg:p-7 ${
+              className={`bg-page p-5 lg:p-7 ${
                 shot.wide && present.length > 1 ? "lg:col-span-2" : ""
               }`}
             >
-              <div className="relative w-full overflow-hidden border border-[#E4E6E8]">
+              <div className="relative w-full overflow-hidden border border-hairline">
                 <Image
                   src={`/shots/${shot.file}`}
                   alt={shot.caption}
@@ -75,10 +75,10 @@ export function Screenshots() {
                 />
               </div>
               <figcaption className="mt-4 flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                <span className="font-mono text-[10px] tracking-wider text-[#8B1F1F] uppercase">
+                <span className="font-mono text-[10px] tracking-wider text-brand uppercase">
                   {shot.label}
                 </span>
-                <span className="font-body text-sm text-[#1A1C1E]/60 sm:text-right">
+                <span className="font-body text-sm text-ink/60 sm:text-right">
                   {shot.caption}
                 </span>
               </figcaption>
