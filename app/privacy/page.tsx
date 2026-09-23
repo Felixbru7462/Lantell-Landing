@@ -16,7 +16,7 @@ const SECTIONS: LegalSection[] = [
     id: "scope",
     heading: "Who this covers",
     body: [
-      "Lantell is operated by Felix Brunnemann, based in the United States. In this policy, \"we\" means Lantell and \"you\" means whoever is reading it - a visitor to this website, a customer using the product, or a tenant or contractor who was sent a link.",
+      "Lantell is operated by Felix Brunnemann, based in California, United States. In this policy, \"we\" means Lantell and \"you\" means whoever is reading it - a visitor to this website, a customer using the product, or a tenant or contractor who was sent a link.",
       "It covers two things: this marketing website (lantell.io) and the product itself (app.lantell.io). Where the two differ, the difference is spelled out.",
     ],
   },
@@ -116,6 +116,7 @@ const SECTIONS: LegalSection[] = [
       "We do not sell personal information and we do not share it for cross-context behavioural advertising, so there is nothing to opt out of on that front. Analytics you can switch off in section 5.",
       "If you are a tenant, contractor or reviewer, start with the property manager who invited you - the data is theirs to act on, and we will support whatever they decide.",
       "Depending on where you live you may have additional rights, and you may have the right to complain to your local data protection authority. We would rather you came to us first.",
+      "We do not check which law covers you before answering. Whether or not a particular privacy statute applies, a request gets handled the same way.",
     ],
   },
   {

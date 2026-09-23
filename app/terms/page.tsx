@@ -126,7 +126,7 @@ const SECTIONS: LegalSection[] = [
     id: "law",
     heading: "Governing law",
     body: [
-      "These terms are governed by the laws of [[the state Lantell is operated from]], United States, without regard to its conflict-of-laws rules. The state and federal courts of that state have exclusive jurisdiction, and both sides consent to that venue.",
+      "These terms are governed by the laws of the State of California, United States, without regard to its conflict-of-laws rules. The state and federal courts located in California have exclusive jurisdiction, and both sides consent to that venue.",
       "If any part of these terms turns out to be unenforceable, the rest still stands.",
     ],
   },
@@ -154,7 +154,6 @@ export default function TermsPage() {
       updated={UPDATED}
       intro="These are the rules for using Lantell. They are written in plain language on purpose - if a clause is doing something you would not expect, you should be able to spot it on one read."
       sections={SECTIONS}
-      draft
     />
   );
 }

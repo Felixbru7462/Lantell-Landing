@@ -10,8 +10,9 @@ State as of 2026-09-21. The site is on the **`staging`** branch and deployed as 
   `DEMO_REQUEST_ENDPOINT`, `DEMO_REQUEST_SECRET` on `lantell-landing`; `DEMO_REQUEST_SECRET`,
   `DEMO_REQUEST_TO` on `lantell`). They take effect on each project's next build.
 - **Database** — migrations `037` and `038` are applied to staging and production.
-- **Privacy Policy** — complete, no gaps, no draft notice. It names `hello@lantell.io` as the
-  contact, which makes step 1 below a prerequisite rather than a nice-to-have.
+- **Privacy Policy and Terms of Service** — complete, no gaps, no draft notice; California law
+  governs. They name `hello@lantell.io` as the contact, which makes step 1 below a prerequisite
+  rather than a nice-to-have.
 
 ## Before merging to production
 
@@ -20,20 +21,22 @@ State as of 2026-09-21. The site is on the **`staging`** branch and deployed as 
 The privacy page publishes that address. Namecheap holds the DNS (`registrar-servers.com`) and the
 root domain has **no MX records at all**, so nothing can conflict.
 
-Namecheap dashboard → Domain List → `lantell.io` → Manage → **Advanced DNS** → Mail Settings →
-choose **Email Forwarding** → forward `hello` to the real inbox. Namecheap adds its own MX records
-for the root domain. `inbound.lantell.io` keeps its own MX (Amazon SES, for project capture
-addresses) — subdomain mail records are independent of the root.
+It takes two screens, which is the part that trips people up:
 
-Free, receive-only. Sending *as* the address is a separate thing; see "Later" below.
+1. **Advanced DNS → Mail Settings → Email Forwarding → Save All Changes.** This is routing only.
+   Namecheap writes its own MX records plus one SPF record whose **Host is `@`** — the SPF record
+   describes the whole domain, so putting an alias name in that field publishes it for a subdomain
+   nobody uses. Don't hand-edit it; let Namecheap create it.
+2. **Domain tab → Redirect Email → Add Forwarder.** *This* is where `hello` gets pointed at the
+   real inbox. The alias lives here, not in the DNS records.
 
-### 2. Finish the Terms page
+`inbound.lantell.io` keeps its own MX (Amazon SES, for project capture addresses) — subdomain mail
+records are independent of the root, so nothing collides.
 
-One gap remains: the state whose law governs. Fill it in, then remove the `draft` prop from
-`<LegalPage>` in `app/terms/page.tsx` so the "not yet in force" notice disappears. A published
-policy that says it isn't in force is worse than no policy.
+Free, receive-only, and allow up to an hour before testing. Sending *as* the address is a separate
+thing; see "Later" below.
 
-### 3. Deploy the app, then this site
+### 2. Deploy the app, then this site
 
 Order matters — the marketing site must never point a working form at a route that isn't there.
 
@@ -49,7 +52,7 @@ git checkout main && git merge staging && git push
 The old splash and its waitlist form disappear then. Both are in this repo's history, and the
 waitlist rows stay untouched in the database.
 
-### 4. Verify, in this order
+### 3. Verify, in this order
 
 - Open `lantell.io`, submit the demo form with a real address.
 - The email should arrive in seconds, and **hitting reply should answer the prospect**, not a
